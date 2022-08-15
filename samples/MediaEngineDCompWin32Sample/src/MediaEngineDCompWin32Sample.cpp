@@ -91,5 +91,8 @@ void MediaEnginePlaybackSample()
 
 int APIENTRY wWinMain(_In_ HINSTANCE /*hInstance*/, _In_opt_ HINSTANCE /*hPrevInstance*/, _In_ LPWSTR /*lpCmdLine*/, _In_ int /*nCmdShow*/)
 {
+    PROCESS_MITIGATION_DYNAMIC_CODE_POLICY policy = {0};
+    policy.ProhibitDynamicCode = 1;
+    SetProcessMitigationPolicy(ProcessDynamicCodePolicy, &policy, sizeof(policy));
     MediaEnginePlaybackSample();
 }
